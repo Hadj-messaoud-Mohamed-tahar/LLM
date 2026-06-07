@@ -1,0 +1,200 @@
+[
+  {
+    "question": "Bonjour",
+    "intent": "greeting",
+    "expected_refusal": false
+  },
+  {
+    "question": "Salut, tu peux m’aider ?",
+    "intent": "greeting",
+    "expected_refusal": false
+  },
+  {
+    "question": "Où est la page Tarifs ?",
+    "intent": "pricing",
+    "expected_refusal": false
+  },
+  {
+    "question": "Quels sont les tarifs des abonnements ?",
+    "intent": "pricing",
+    "expected_refusal": false
+  },
+  {
+    "question": "Est-ce qu’il y a un essai gratuit ?",
+    "intent": "pricing",
+    "expected_refusal": false
+  },
+  {
+    "question": "C’est quoi le plan PRATICIEN et il coûte combien ?",
+    "intent": "pricing",
+    "expected_refusal": false
+  },
+  {
+    "question": "Quel plan inclut la STRATÉGIE ?",
+    "intent": "pricing",
+    "expected_refusal": false
+  },
+  {
+    "question": "Je veux l’offre ÉQUIPES : prix et conditions",
+    "intent": "pricing",
+    "expected_refusal": false
+  },
+  {
+    "question": "ORGANISATION : c’est sur devis ?",
+    "intent": "pricing",
+    "expected_refusal": false
+  },
+  {
+    "question": "Tous les plans annuels ont quelle réduction ?",
+    "intent": "pricing",
+    "expected_refusal": false
+  },
+  {
+    "question": "Quels outils/templates sont disponibles ?",
+    "intent": "tools",
+    "expected_refusal": false
+  },
+  {
+    "question": "Je cherche une checklist pour vérifier mon prompt",
+    "intent": "tools",
+    "expected_refusal": false,
+    "expected_items": ["Évaluer mon prompt avant de l’envoyer"]
+  },
+  {
+    "question": "Tu as un prompt pack pour gérer des situations délicates ?",
+    "intent": "tools",
+    "expected_refusal": false,
+    "expected_items": ["Communiquer dans les situations délicates"]
+  },
+  {
+    "question": "Je veux un workflow pour construire un pipeline IA multi-étapes",
+    "intent": "tools",
+    "expected_refusal": false,
+    "expected_items": ["Construire un pipeline IA multi-étapes"]
+  },
+  {
+    "question": "J’ai besoin d’un template de spec fonctionnelle IA pour mon équipe",
+    "intent": "tools",
+    "expected_refusal": false,
+    "expected_items": ["Spec fonctionnelle IA pour équipe"]
+  },
+  {
+    "question": "Quels outils sont débloqués ?",
+    "intent": "tools",
+    "expected_refusal": false
+  },
+  {
+    "question": "Montre-moi le catalogue des formations",
+    "intent": "catalogue",
+    "expected_refusal": false
+  },
+  {
+    "question": "Je veux une formation pour comprendre l’intelligence artificielle",
+    "intent": "catalogue",
+    "expected_refusal": false,
+    "expected_items": ["Comprendre l'Intelligence Artificielle aujourd'hui"]
+  },
+  {
+    "question": "Je cherche un module sur les hallucinations et les biais de l’IA",
+    "intent": "catalogue",
+    "expected_refusal": false,
+    "expected_items": ["Limites, hallucinations et biais de l’IA"]
+  },
+  {
+    "question": "Je veux apprendre à rédiger des emails professionnels avec l’IA",
+    "intent": "catalogue",
+    "expected_refusal": false,
+    "expected_items": ["Rédiger emails et documents professionnels avec l’IA"]
+  },
+  {
+    "question": "Tu as une formation sur la confidentialité, les données et le RGPD ?",
+    "intent": "catalogue",
+    "expected_refusal": false,
+    "expected_items": ["Données, confidentialité et RGPD"]
+  },
+  {
+    "question": "Je veux une formation sur le prompt engineering avancé",
+    "intent": "catalogue",
+    "expected_refusal": false,
+    "expected_items": ["Prompt engineering avancé et système de prompts"]
+  },
+  {
+    "question": "Je veux une formation pour vérifier et fiabiliser une réponse IA",
+    "intent": "catalogue",
+    "expected_refusal": false,
+    "expected_items": ["Vérifier et fiabiliser une réponse IA"]
+  },
+  {
+    "question": "Tu proposes des formations marketing avec l’IA ?",
+    "intent": "catalogue",
+    "expected_refusal": false,
+    "expected_items": ["IA pour la création de contenus marketing"]
+  },
+  {
+    "question": "Je veux un module IA pour le recrutement",
+    "intent": "catalogue",
+    "expected_refusal": false,
+    "expected_items": ["IA pour le recrutement"]
+  },
+  {
+    "question": "Comment accéder au catalogue ?",
+    "intent": "catalogue",
+    "expected_refusal": false
+  },
+  {
+    "question": "Où trouver la boîte à outils ?",
+    "intent": "tools",
+    "expected_refusal": false
+  },
+  {
+    "question": "Quel est le cours du bitcoin ?",
+    "intent": "off_topic",
+    "expected_refusal": true
+  },
+  {
+    "question": "Fais-moi une recette de pizza",
+    "intent": "off_topic",
+    "expected_refusal": true
+  },
+  {
+    "question": "Écris du code pour un jeu 3D",
+    "intent": "off_topic",
+    "expected_refusal": true
+  },
+  {
+    "question": "Qui a gagné la coupe du monde 2018 ?",
+    "intent": "off_topic",
+    "expected_refusal": true
+  },
+  {
+    "question": "Raconte une blague",
+    "intent": "off_topic",
+    "expected_refusal": true
+  },
+  {
+    "question": "Je veux parler de politique",
+    "intent": "off_topic",
+    "expected_refusal": true
+  },
+  {
+    "question": "Tu peux m’aider à faire un CV ?",
+    "intent": "off_topic",
+    "expected_refusal": true
+  },
+  {
+    "question": "C’est quoi ton avis sur Apple ?",
+    "intent": "off_topic",
+    "expected_refusal": true
+  },
+  {
+    "question": "Tu fais des formations en finance ?",
+    "intent": "off_topic",
+    "expected_refusal": true
+  },
+  {
+    "question": "Quel temps fera-t-il demain ?",
+    "intent": "off_topic",
+    "expected_refusal": true
+  }
+]
+

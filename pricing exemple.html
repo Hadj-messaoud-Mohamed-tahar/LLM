@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarifs — CreaExperTech</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral:    #E85D3A;
+    --coral-dk: #C94326;
+    --green:    #00703C;
+    --green-lt: #E6F4ED;
+    --blue:     #1F4E79;
+    --blue-lt:  #E8F0F8;
+    --gold:     #FFD966;
+    --gold-dk:  #B8860B;
+    --dark:     #1F1F1F;
+    --text:     #2D2D2D;
+    --muted:    #6B7280;
+    --border:   #E5E7EB;
+    --surface:  #F9FAFB;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #F4F5F7; color: var(--text); min-height: 100vh; }
+
+/* ── TOPBAR ── */
+.topbar {
+background: linear-gradient(135deg, var(–coral) 0%, var(–coral-dk) 100%);
+padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.topbar-search {
+flex: 1; max-width: 560px; background: rgba(255,255,255,.18);
+border: 1.5px solid rgba(255,255,255,.4); border-radius: 10px; padding: 10px 16px;
+display: flex; align-items: center; gap: 10px; color: #fff; font-size: 14px; font-family: inherit;
+}
+.topbar-actions { display: flex; gap: 12px; }
+.btn-outline-white {
+border: 1.5px solid #fff; background: transparent; color: #fff; border-radius: 8px;
+padding: 8px 16px; font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer;
+}
+.btn-white {
+background: #fff; color: var(–coral-dk); border: none; border-radius: 8px;
+padding: 8px 18px; font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer;
+}
+
+/* ── HERO ── */
+.hero { text-align: center; padding: 48px 24px 28px; background: #fff; border-bottom: 1px solid var(–border); }
+.hero h1 {
+font-family: ‘Syne’, sans-serif; font-size: 2.3rem; font-weight: 800;
+color: var(–dark); letter-spacing: -.02em; line-height: 1.15;
+}
+.hero p { margin-top: 10px; color: var(–muted); font-size: 1rem; max-width: 500px; margin-inline: auto; }
+
+/* ── FORMAT BAR ── */
+.format-bar {
+background: #fff; border-bottom: 1px solid var(–border);
+padding: 11px 32px; display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap;
+}
+.format-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(–muted); }
+.format-icon {
+width: 28px; height: 28px; border-radius: 7px;
+display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;
+}
+.format-label { font-weight: 600; color: var(–dark); }
+
+/* ── TABS ── */
+.tabs-wrapper {
+display: flex; align-items: center; justify-content: center;
+max-width: 1360px; margin: 26px auto 0; padding: 0 24px;
+}
+.tab-btn {
+padding: 9px 26px; border: 1.5px solid var(–border); background: #fff;
+font-family: inherit; font-size: 13.5px; font-weight: 600; color: var(–muted); cursor: pointer; transition: .15s;
+}
+.tab-btn:first-child { border-radius: 10px 0 0 10px; }
+.tab-btn:last-child  { border-radius: 0 10px 10px 0; border-left: none; }
+.tab-btn.active { background: var(–dark); color: #fff; border-color: var(–dark); }
+
+/* ── TOGGLE ── */
+.toggle-wrapper {
+display: flex; align-items: center; justify-content: flex-end; gap: 10px;
+padding: 14px 24px 0; max-width: 1360px; margin: 0 auto;
+}
+.toggle-btn {
+padding: 5px 13px; border-radius: 8px; border: none;
+font-family: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: .15s;
+}
+.toggle-btn.active { background: var(–dark); color: #fff; }
+.toggle-btn:not(.active) { background: #e5e7eb; color: var(–muted); }
+.badge-save {
+background: var(–green); color: #fff; font-size: 10.5px;
+font-weight: 700; padding: 2px 7px; border-radius: 20px;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+display: flex; align-items: center; gap: 8px;
+font-family: ‘Syne’, sans-serif; font-weight: 700; font-size: .95rem;
+color: var(–dark); padding: 22px 24px 10px; max-width: 1360px; margin: 0 auto;
+}
+
+/* ── LEGEND ── */
+.legend {
+display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+padding: 14px 24px 0; max-width: 1360px; margin: 0 auto;
+}
+.legend-title { font-size: 11.5px; font-weight: 600; color: var(–muted); }
+.legend-item  { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(–text); }
+.tier-pill {
+flex-shrink: 0; font-size: 9px; font-weight: 700; letter-spacing: .05em;
+padding: 2px 6px; border-radius: 4px; text-transform: uppercase; white-space: nowrap;
+}
+.pill-green { background: var(–green-lt); color: var(–green); }
+.pill-blue  { background: var(–blue-lt);  color: var(–blue); }
+.pill-gold  { background: #FFF8DC;         color: var(–gold-dk); }
+
+/* ── 4-COL GRID ── */
+.plans-grid {
+display: grid; grid-template-columns: repeat(4, 1fr);
+gap: 14px; padding: 0 24px; max-width: 1360px; margin: 0 auto;
+}
+.plans-grid-b2b {
+display: grid; grid-template-columns: repeat(2, 1fr);
+gap: 14px; padding: 14px 24px 48px; max-width: 1360px; margin: 0 auto;
+}
+
+/* ── CARD ── */
+.card {
+background: #fff; border: 1.5px solid var(–border); border-radius: 14px; padding: 22px 20px;
+display: flex; flex-direction: column; position: relative; transition: box-shadow .2s;
+}
+.card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.09); }
+.card.popular { border-color: var(–coral); border-width: 2px; box-shadow: 0 4px 20px rgba(232,93,58,.12); }
+.card.premium {
+border-color: var(–gold-dk); border-width: 2px;
+background: linear-gradient(160deg, #fff 60%, #FFFDF0 100%);
+box-shadow: 0 4px 20px rgba(184,134,11,.11);
+}
+.card-badge {
+position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+padding: 3px 12px; border-radius: 20px; font-size: 11px; font-weight: 700;
+white-space: nowrap; letter-spacing: .04em;
+}
+.badge-popular { background: var(–coral); color: #fff; }
+.badge-premium { background: linear-gradient(90deg, #1F1F1F, #4a4a4a); color: var(–gold); }
+.badge-new     { background: var(–blue); color: #fff; }
+
+.plan-name {
+font-family: ‘Syne’, sans-serif; font-size: 1.05rem; font-weight: 800;
+color: var(–dark); letter-spacing: .01em;
+}
+.plan-tagline { font-size: 12px; color: var(–muted); margin-top: 3px; line-height: 1.4; min-height: 32px; }
+.plan-reco {
+display: inline-block; margin-top: 7px;
+font-size: 10.5px; color: var(–blue); font-weight: 600;
+background: var(–blue-lt); padding: 2px 8px; border-radius: 20px;
+}
+
+.plan-price { margin: 12px 0 0; display: flex; align-items: baseline; gap: 3px; }
+.price-num  { font-family: ‘Syne’, sans-serif; font-size: 2.3rem; font-weight: 800; color: var(–dark); line-height: 1; }
+.price-unit { font-size: 12px; color: var(–muted); }
+.price-annual { font-size: 10.5px; color: var(–green); font-weight: 600; margin-top: 3px; min-height: 14px; }
+
+/* ── ACCESS TABLE ── */
+.access-section {
+margin-top: 14px; border-top: 1px solid var(–border);
+padding-top: 12px; display: flex; flex-direction: column; gap: 9px;
+}
+.access-row { display: flex; align-items: flex-start; gap: 7px; }
+.access-text { font-size: 12px; color: var(–text); line-height: 1.4; }
+.qty  { font-family: ‘Syne’, sans-serif; font-weight: 800; font-size: 12.5px; }
+.or   {
+display: inline-block; font-size: 9.5px; font-weight: 700; color: var(–muted);
+background: #f3f4f6; padding: 1px 5px; border-radius: 4px; margin: 0 2px; vertical-align: middle;
+}
+.sub  { color: var(–muted); font-size: 11px; display: block; margin-top: 1px; }
+.dimmed { color: #9ca3af; }
+.locked { color: #d1d5db; font-style: italic; }
+
+/* ── EXTRAS ── */
+.extras { margin-top: 12px; display: flex; flex-direction: column; gap: 5px; flex: 1; }
+.extra-item { display: flex; align-items: flex-start; gap: 6px; font-size: 11.5px; line-height: 1.4; }
+.chk  { color: var(–green); flex-shrink: 0; margin-top: 1px; font-size: 11px; }
+.dash { color: #d1d5db; flex-shrink: 0; margin-top: 1px; }
+
+/* ── CTA ── */
+.cta-btn {
+margin-top: 16px; width: 100%; padding: 10px; border-radius: 9px; border: none;
+font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer;
+transition: .15s; letter-spacing: .02em;
+}
+.cta-default { background: var(–surface); border: 1.5px solid var(–border); color: var(–dark); }
+.cta-default:hover { background: #eff0f2; }
+.cta-teal  { background: #0d7377; color: #fff; }
+.cta-teal:hover { background: #0a5f62; }
+.cta-coral { background: linear-gradient(135deg, var(–coral), var(–coral-dk)); color: #fff; }
+.cta-coral:hover { opacity: .9; }
+.cta-gold  { background: linear-gradient(135deg, #1F1F1F, #3a3a3a); color: var(–gold); }
+.cta-gold:hover { opacity: .9; }
+.cta-blue  { background: var(–blue); color: #fff; }
+.cta-blue:hover { opacity: .88; }
+
+/* ── DIVIDER ── */
+.divider {
+display: flex; align-items: center; gap: 12px;
+padding: 0 24px; max-width: 1360px; margin: 26px auto 0;
+}
+.divider-line { flex: 1; height: 1px; background: var(–border); }
+.divider-text {
+font-size: 11px; color: var(–muted); font-weight: 700;
+white-space: nowrap; text-transform: uppercase; letter-spacing: .07em;
+}
+
+/* ── B2B CARDS ── */
+.card-h {
+background: #fff; border: 1.5px solid var(–border); border-radius: 14px; padding: 26px 28px;
+display: flex; align-items: flex-start; gap: 28px; transition: box-shadow .2s;
+}
+.card-h:hover { box-shadow: 0 8px 28px rgba(0,0,0,.09); }
+.card-h .left  { flex: 0 0 195px; }
+.card-h .right { flex: 1; }
+.card-h.dark-card { background: linear-gradient(135deg,#1a1a2e,#2d2d2d); border-color: #444; }
+.bottom-features { display: grid; grid-template-columns: repeat(2,1fr); gap: 7px 20px; }
+.bottom-item { display: flex; align-items: flex-start; gap: 6px; font-size: 11.5px; line-height: 1.4; }
+.roi-banner {
+background: var(–green-lt); border: 1px solid #b7dfca; border-radius: 9px;
+padding: 9px 13px; font-size: 11.5px; color: var(–green); font-weight: 500;
+margin-top: 12px; line-height: 1.5;
+}
+
+/* ── CRESCENDO VISUAL ── */
+.crescendo-bar {
+max-width: 1360px; margin: 0 auto; padding: 0 24px 0;
+display: flex; align-items: stretch; gap: 0;
+font-size: 11px; font-weight: 600;
+}
+.cbar-item {
+flex: 1; text-align: center; padding: 7px 4px 6px;
+border-radius: 0; display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.cbar-item:first-child { border-radius: 8px 0 0 8px; }
+.cbar-item:last-child  { border-radius: 0 8px 8px 0; }
+.cbar-name { font-family: ‘Syne’, sans-serif; font-weight: 800; font-size: 11px; }
+.cbar-price { font-weight: 400; opacity: .8; font-size: 10px; }
+
+/* ── COMPARE TABLE ── */
+.compare-wrapper { max-width: 1360px; margin: 0 auto; padding: 0 24px 52px; }
+table.compare {
+width: 100%; border-collapse: collapse; font-size: 12px; background: #fff;
+border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+table.compare th {
+background: var(–dark); color: #fff; padding: 11px 14px; text-align: left;
+font-family: ‘Syne’, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .03em;
+}
+table.compare th:first-child { width: 180px; }
+table.compare td { padding: 9px 14px; border-bottom: 1px solid var(–border); vertical-align: top; }
+table.compare tr:last-child td { border-bottom: none; }
+table.compare tr:nth-child(even) td { background: var(–surface); }
+table.compare td:first-child { font-weight: 600; font-size: 11.5px; color: var(–dark); }
+.cell-yes { color: var(–green); font-weight: 700; }
+.cell-no  { color: #d1d5db; }
+.cell-val { font-weight: 700; color: var(–dark); font-size: 12px; }
+.cell-sub { font-size: 10.5px; color: var(–muted); display: block; font-weight: 400; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) { .plans-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 700px)  {
+.plans-grid, .plans-grid-b2b { grid-template-columns: 1fr; padding: 0 16px; }
+.plans-grid-b2b { padding-bottom: 32px; }
+.card-h { flex-direction: column; }
+.card-h .left { flex: unset; }
+.bottom-features { grid-template-columns: 1fr; }
+.hero h1 { font-size: 1.7rem; }
+.crescendo-bar { flex-direction: column; }
+.cbar-item:first-child { border-radius: 8px 8px 0 0; }
+.cbar-item:last-child  { border-radius: 0 0 8px 8px; }
+.tabs-wrapper, .toggle-wrapper, .section-label, .divider,
+.legend, .compare-wrapper, .crescendo-bar { padding-left: 16px; padding-right: 16px; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+  <div class="topbar-search">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    Ne formez pas &#224; l'IA. Transformez votre m&#233;tier.
+  </div>
+  <div class="topbar-actions">
+    <button class="btn-outline-white">+ Ajouter un module</button>
+    <button class="btn-white">Tarifs</button>
+  </div>
+</div>
+
+<!-- HERO -->
+
+<div class="hero">
+  <h1>Formez-vous. Formez vos &#233;quipes.<br>Transformez votre organisation.</h1>
+  <p>Des plans clairs, des contenus IA op&#233;rationnels, un acc&#232;s imm&#233;diat. R&#233;siliable &#224; tout moment.</p>
+</div>
+
+<!-- FORMAT BAR -->
+
+<div class="format-bar">
+  <span style="font-size:12px;font-weight:600;color:var(--muted);">Formats de contenus&nbsp;:</span>
+  <div class="format-item">
+    <div class="format-icon" style="background:#FFF3E0;">&#9889;</div>
+    <div><span class="format-label">Module</span> &mdash; 10&#8239;&#224;&#8239;15&#8239;min &mdash; un cas d'usage concret</div>
+  </div>
+  <div class="format-item">
+    <div class="format-icon" style="background:#E8F0F8;">&#128218;</div>
+    <div><span class="format-label">Parcours</span> &mdash; plusieurs modules regroup&#233;s &mdash; mont&#233;e en comp&#233;tences structur&#233;e, quiz et certificat inclus</div>
+  </div>
+  <div class="format-item">
+    <div class="format-icon" style="background:#FFF8DC;">&#11088;</div>
+    <div><span class="format-label">Masterclass</span> &mdash; session live ou replay &mdash; expert s&#233;lectionn&#233;</div>
+  </div>
+</div>
+
+<!-- TABS -->
+
+<div class="tabs-wrapper">
+  <button class="tab-btn active" onclick="showTab('b2c',this)">Pour moi</button>
+  <button class="tab-btn" onclick="showTab('b2b',this)">Pour mon &#233;quipe ou mon organisation</button>
+</div>
+
+<!-- TOGGLE -->
+
+<div class="toggle-wrapper">
+  <button class="toggle-btn active" id="btn-monthly" onclick="setMode('monthly')">Mensuel</button>
+  <button class="toggle-btn" id="btn-annual" onclick="setMode('annual')">Annuel&#160;<span class="badge-save">&#8722;20&#160;%</span></button>
+</div>
+
+<!-- LEGEND -->
+
+<div class="legend">
+  <span class="legend-title">Niveaux de contenus&nbsp;:</span>
+  <span class="legend-item"><span class="tier-pill pill-green">FONDAMENTAUX</span>Comprendre l'IA et ses usages essentiels</span>
+  <span class="legend-item"><span class="tier-pill pill-blue">M&#201;TIER</span>Appliquer l'IA &#224; ses pratiques professionnelles</span>
+  <span class="legend-item"><span class="tier-pill pill-gold">STRAT&#201;GIE</span>Ma&#238;triser les usages avanc&#233;s et transformer son organisation</span>
+</div>
+
+<!-- ═══════════ B2C -->
+
+<div id="section-b2c">
+
+  <!-- CRESCENDO VISUAL -->
+
+  <div class="crescendo-bar" style="margin-top:22px;">
+    <div class="cbar-item" style="background:#F3F4F6; color:var(--muted);">
+      <div class="cbar-name">D&#201;COUVERTE</div>
+      <div class="cbar-price">0&#160;&#8364;</div>
+    </div>
+    <div class="cbar-item" style="background:#E8F4F0; color:var(--green);">
+      <div class="cbar-name">ESSENTIEL</div>
+      <div class="cbar-price">19&#160;&#8364;/mois</div>
+    </div>
+    <div class="cbar-item" style="background:linear-gradient(90deg,#FDE8DF,#FAD5C8); color:var(--coral-dk);">
+      <div class="cbar-name">PRATICIEN</div>
+      <div class="cbar-price">39&#160;&#8364;/mois</div>
+    </div>
+    <div class="cbar-item" style="background:linear-gradient(90deg,#2a2a2a,#1F1F1F); color:var(--gold);">
+      <div class="cbar-name">AVANC&#201;</div>
+      <div class="cbar-price">89&#160;&#8364;/mois</div>
+    </div>
+  </div>
+
+  <div class="section-label" style="padding-top:16px;">
+    <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    Offres individuelles
+  </div>
+
+  <div class="plans-grid">
+
+
+<!-- DÉCOUVERTE -->
+<div class="card">
+  <div class="plan-name">D&#201;COUVERTE</div>
+  <div class="plan-tagline">D&#233;couvrir l'IA professionnelle et tester la plateforme</div>
+  <span class="plan-reco">Pour&nbsp;: curieux, primo-arrivants IA</span>
+  <div class="plan-price">
+    <span class="price-num">0</span><span class="price-unit">&#160;&#8364;</span>
+  </div>
+  <div class="price-annual">&nbsp;</div>
+
+  <div class="access-section">
+    <div class="access-row">
+      <span class="tier-pill pill-green">FONDAMENTAUX</span>
+      <div class="access-text">
+        <span class="qty">1&#160;parcours</span> d'introduction complet<br>
+        <span class="sub">+&#160;3&#160;modules libres au choix</span>
+      </div>
+    </div>
+    <div class="access-row">
+      <span class="tier-pill pill-blue">M&#201;TIER</span>
+      <div class="access-text locked">Aper&#231;u uniquement</div>
+    </div>
+    <div class="access-row">
+      <span class="tier-pill pill-gold">STRAT&#201;GIE</span>
+      <div class="access-text locked">Non disponible</div>
+    </div>
+  </div>
+
+  <div class="extras">
+    <div class="extra-item"><span class="chk">&#10003;</span>Suivi de progression simple &bull; favoris</div>
+    <div class="extra-item"><span class="dash">&#8211;</span><span class="dimmed">Pas de certificat ni quiz adaptatif</span></div>
+    <div class="extra-item"><span class="dash">&#8211;</span><span class="dimmed">Pas de templates t&#233;l&#233;chargeables</span></div>
+  </div>
+
+  <button class="cta-btn cta-default">Commencer gratuitement</button>
+</div>
+
+<!-- ESSENTIEL (NEW) -->
+<div class="card" style="border-color:#00703C; border-width:2px;">
+  <div class="card-badge badge-new">Nouveau</div>
+  <div class="plan-name">ESSENTIEL</div>
+  <div class="plan-tagline">D&#233;buter l'IA et explorer les premiers cas d'usage m&#233;tier</div>
+  <span class="plan-reco">Pour&nbsp;: salari&#233;s, professionnels en reconversion</span>
+  <div class="plan-price">
+    <span class="price-num" id="p-ess">19</span><span class="price-unit">&#160;&#8364;/mois</span>
+  </div>
+  <div class="price-annual" id="a-ess">soit&#160;15&#160;&#8364;/mois &#8212; 182&#160;&#8364;/an</div>
+
+  <div class="access-section">
+    <div class="access-row">
+      <span class="tier-pill pill-green">FONDAMENTAUX</span>
+      <div class="access-text">
+        <span class="qty">Catalogue complet</span><br>
+        <span class="sub">Tous les parcours et modules disponibles</span>
+      </div>
+    </div>
+    <div class="access-row">
+      <span class="tier-pill pill-blue">M&#201;TIER</span>
+      <div class="access-text">
+        <span class="qty">8&#160;modules / mois</span><br>
+        <span class="sub">Au choix dans le catalogue M&#233;tier</span>
+      </div>
+    </div>
+    <div class="access-row">
+      <span class="tier-pill pill-gold">STRAT&#201;GIE</span>
+      <div class="access-text locked">Non inclus</div>
+    </div>
+  </div>
+
+  <div class="extras">
+    <div class="extra-item"><span class="chk">&#10003;</span>Certificat &#224; la fin de chaque parcours</div>
+    <div class="extra-item"><span class="chk">&#10003;</span>Quiz adaptatif &bull; favoris &bull; progression</div>
+  </div>
+
+  <button class="cta-btn cta-teal">Choisir ESSENTIEL</button>
+</div>
+
+<!-- PRATICIEN -->
+<div class="card popular">
+  <div class="card-badge badge-popular">&#9889;&#160;Le plus populaire</div>
+  <div class="plan-name">PRATICIEN</div>
+  <div class="plan-tagline">Int&#233;grer l'IA dans son activit&#233; professionnelle quotidienne</div>
+  <span class="plan-reco">Pour&nbsp;: managers, ind&#233;pendants, consultants juniors</span>
+  <div class="plan-price">
+    <span class="price-num" id="p-prat">39</span><span class="price-unit">&#160;&#8364;/mois</span>
+  </div>
+  <div class="price-annual" id="a-prat">soit&#160;31&#160;&#8364;/mois &#8212; 374&#160;&#8364;/an</div>
+
+  <div class="access-section">
+    <div class="access-row">
+      <span class="tier-pill pill-green">FONDAMENTAUX</span>
+      <div class="access-text">
+        <span class="qty">Catalogue complet</span>
+      </div>
+    </div>
+    <div class="access-row">
+      <span class="tier-pill pill-blue">M&#201;TIER</span>
+      <div class="access-text">
+        <span class="qty">20&#160;modules / mois</span><br>
+        <span class="sub">Au choix dans le catalogue M&#233;tier</span>
+      </div>
+    </div>
+    <div class="access-row">
+      <span class="tier-pill pill-gold">STRAT&#201;GIE</span>
+      <div class="access-text">Aper&#231;u + achat de masterclasses<br>
+        <span class="sub">Parcours dirigeants &#224; partir de 119&#160;&#8364; &bull; modules &#224; partir de 39&#160;&#8364;</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="extras">
+    <div class="extra-item"><span class="chk">&#10003;</span>Certificat &#224; la fin de chaque parcours</div>
+    <div class="extra-item"><span class="chk">&#10003;</span>Quiz adaptatif &bull; favoris &bull; historique &bull; progression</div>
+    <div class="extra-item"><span class="chk">&#10003;</span>Essai gratuit&#160;14&#160;jours</div>
+  </div>
+
+  <button class="cta-btn cta-coral">Essayer&#160;14&#160;jours gratuitement</button>
+</div>
+
+<!-- AVANCÉ -->
+<div class="card premium">
+  <div class="card-badge badge-premium">&#9733;&#160;Le plus complet</div>
+  <div class="plan-name">AVANC&#201;</div>
+  <div class="plan-tagline">Ma&#238;triser les usages avanc&#233;s de l'IA et acc&#233;der aux ressources premium</div>
+  <span class="plan-reco">Pour&nbsp;: consultants, formateurs, managers experts</span>
+  <div class="plan-price">
+    <span class="price-num" id="p-avd">89</span><span class="price-unit">&#160;&#8364;/mois</span>
+  </div>
+  <div class="price-annual" id="a-avd">soit&#160;71&#160;&#8364;/mois &#8212; 854&#160;&#8364;/an</div>
+
+  <div class="access-section">
+    <div class="access-row">
+      <span class="tier-pill pill-green">FONDAMENTAUX</span>
+      <div class="access-text"><span class="qty">Catalogue complet</span></div>
+    </div>
+    <div class="access-row">
+      <span class="tier-pill pill-blue">M&#201;TIER</span>
+      <div class="access-text">
+        <span class="qty">Catalogue complet</span><br>
+        <span class="sub">Acc&#232;s &#224; tous les parcours et modules disponibles</span>
+      </div>
+    </div>
+    <div class="access-row">
+      <span class="tier-pill pill-gold">STRAT&#201;GIE</span>
+      <div class="access-text">
+        <span class="qty">Contenus Strat&#233;gie inclus chaque mois</span><br>
+        <span class="sub">Modules, masterclasses &amp; ressources premium renouvel&#233;s</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="extras">
+    <div class="extra-item"><span class="chk">&#10003;</span>Templates IA op&#233;rationnels (cas d'usage avanc&#233;s, prompts m&#233;tier)</div>
+    <div class="extra-item"><span class="chk">&#10003;</span>Lives mensuels avec experts s&#233;lectionn&#233;s</div>
+    <div class="extra-item"><span class="chk">&#10003;</span>Communaut&#233; priv&#233;e &bull; webinars prioritaires</div>
+    <div class="extra-item"><span class="chk">&#10003;</span>Certificats avanc&#233;s reconnus en entreprise</div>
+  </div>
+
+  <button class="cta-btn cta-gold">Choisir AVANC&#201;</button>
+</div>
+
+
+  </div><!-- /plans-grid -->
+</div><!-- /b2c -->
+
+<!-- ═══════════ B2B -->
+
+<div id="section-b2b">
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-text">&#201;quipes &amp; Organisations</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="section-label">
+    <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    Offres entreprises
+  </div>
+
+  <div class="plans-grid-b2b">
+
+
+<!-- ÉQUIPES -->
+<div class="card-h">
+  <div class="left">
+    <div class="plan-name">&#201;QUIPES</div>
+    <div class="plan-tagline" style="min-height:0;font-size:12px;">Piloter la mont&#233;e en comp&#233;tences IA de votre &#233;quipe de fa&#231;on mesurable et finançable</div>
+    <span class="plan-reco" style="margin-top:8px;display:inline-block;">PME, directions RH, managers</span>
+    <div class="plan-price" style="margin-top:12px;">
+      <span class="price-num" id="p-team">45</span><span class="price-unit">&#160;&#8364;/user/mois</span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin-top:4px;">Min.&#160;5&#160;utilisateurs &bull; engagement annuel</div>
+    <div class="roi-banner">
+      <strong>&#201;ligible OPCO.</strong> Moins de 550&#160;&#8364;/an par collaborateur pour un plan de formation IA complet et tra&#231;able.
+    </div>
+    <button class="cta-btn cta-blue" style="margin-top:14px;">Demander une d&#233;mo</button>
+  </div>
+  <div class="right">
+    <div style="font-size:10.5px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:11px;">Droits AVANC&#201; par collaborateur +</div>
+    <div class="bottom-features">
+      <div class="bottom-item"><span class="chk">&#10003;</span>
+        <div>Catalogue <strong>Fondamentaux</strong> complet<span style="display:block;font-size:10.5px;color:var(--muted);">par collaborateur</span></div>
+      </div>
+      <div class="bottom-item"><span class="chk">&#10003;</span>
+        <div>Catalogue <strong>M&#233;tier</strong> complet<span style="display:block;font-size:10.5px;color:var(--muted);">par collaborateur</span></div>
+      </div>
+      <div class="bottom-item"><span class="chk">&#10003;</span>
+        <div><strong>Contenus Strat&#233;gie inclus</strong> chaque mois<span style="display:block;font-size:10.5px;color:var(--muted);">par collaborateur</span></div>
+      </div>
+      <div class="bottom-item"><span class="chk">&#10003;</span>Suivi progression par collaborateur en temps r&#233;el</div>
+      <div class="bottom-item"><span class="chk">&#10003;</span>Reporting RH exportable &mdash; justificatifs OPCO</div>
+      <div class="bottom-item"><span class="chk">&#10003;</span>Certificats &bull; quiz adaptatif</div>
+      <div class="bottom-item"><span class="chk">&#10003;</span>Branding logo client</div>
+      <div class="bottom-item"><span class="chk">&#10003;</span>Account manager d&#233;di&#233;</div>
+    </div>
+  </div>
+</div>
+
+<!-- ORGANISATION -->
+<div class="card-h dark-card">
+  <div class="left">
+    <div class="plan-name" style="color:#fff;">ORGANISATION</div>
+    <div class="plan-tagline" style="color:#aaa;min-height:0;font-size:12px;">D&#233;ployer l'IA &#224; grande &#233;chelle avec un catalogue personnalis&#233;, un pilotage avanc&#233; et une int&#233;gration aux outils internes</div>
+    <span class="plan-reco" style="background:rgba(255,215,102,.15);color:var(--gold);margin-top:8px;display:inline-block;">ETI, grands comptes, r&#233;seaux multi-sites</span>
+    <div class="plan-price" style="margin-top:12px;">
+      <span style="font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;color:var(--gold);line-height:1;">Sur devis</span>
+    </div>
+    <div style="font-size:11px;color:#888;margin-top:4px;">200+&#160;utilisateurs &bull; engagement annuel</div>
+    <div style="background:rgba(255,215,102,.1);border:1px solid rgba(255,215,102,.25);border-radius:9px;padding:9px 13px;margin-top:12px;font-size:11.5px;color:#ddd;line-height:1.5;">
+      <strong style="color:var(--gold);">Parcours, attestations et justificatifs</strong> con&#231;us pour s'int&#233;grer dans une d&#233;marche qualit&#233; et faciliter les demandes de financement formation.
+    </div>
+    <button class="cta-btn" style="margin-top:14px;background:var(--gold);color:#1F1F1F;font-weight:800;border:none;border-radius:9px;padding:10px;cursor:pointer;width:100%;">Nous contacter</button>
+  </div>
+  <div class="right">
+    <div style="font-size:10.5px;font-weight:700;color:#888;letter-spacing:.06em;text-transform:uppercase;margin-bottom:11px;">Acc&#232;s illimit&#233; tous niveaux +</div>
+    <div class="bottom-features">
+      <div class="bottom-item"><span style="color:var(--gold);">&#10003;</span>
+        <div style="color:#ddd;"><strong style="color:#fff;">Acc&#232;s illimit&#233;</strong> &#8212; Fondamentaux, M&#233;tier, Strat&#233;gie<span style="display:block;font-size:10.5px;color:#888;">tous parcours et modules sans restriction</span></div>
+      </div>
+      <div class="bottom-item"><span style="color:var(--gold);">&#10003;</span><span style="color:#ddd;">Catalogue priv&#233; sur-mesure</span></div>
+      <div class="bottom-item"><span style="color:var(--gold);">&#10003;</span><span style="color:#ddd;">SSO &amp; authentification entreprise</span></div>
+      <div class="bottom-item"><span style="color:var(--gold);">&#10003;</span><span style="color:#ddd;">Marque blanche compl&#232;te</span></div>
+      <div class="bottom-item"><span style="color:var(--gold);">&#10003;</span><span style="color:#ddd;">Analytics avanc&#233;s &amp; reporting OPCO</span></div>
+      <div class="bottom-item"><span style="color:var(--gold);">&#10003;</span><span style="color:#ddd;">Onboarding d&#233;di&#233; &amp; support premium</span></div>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+</div><!-- /b2b -->
+
+<!-- ═══════════ COMPARE TABLE -->
+
+<div class="compare-wrapper">
+  <div class="divider" style="padding:0 0 22px;margin:0;">
+    <div class="divider-line"></div>
+    <span class="divider-text">Comparatif d&#233;taill&#233;</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <table class="compare">
+    <thead>
+      <tr>
+        <th></th>
+        <th>D&#201;COUVERTE<br><span style="font-weight:400;font-size:10px;color:#aaa;">0&#160;&#8364;</span></th>
+        <th>ESSENTIEL<br><span style="font-weight:400;font-size:10px;color:#aaa;">19&#160;&#8364;/mois</span></th>
+        <th>PRATICIEN<br><span style="font-weight:400;font-size:10px;color:#aaa;">39&#160;&#8364;/mois</span></th>
+        <th>AVANC&#201;<br><span style="font-weight:400;font-size:10px;color:#aaa;">89&#160;&#8364;/mois</span></th>
+        <th>&#201;QUIPES<br><span style="font-weight:400;font-size:10px;color:#aaa;">45&#160;&#8364;/user/mois</span></th>
+        <th>ORGANISATION<br><span style="font-weight:400;font-size:10px;color:#aaa;">Sur devis</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Fondamentaux</td>
+        <td class="cell-val">1 parcours<span class="cell-sub">+ 3 modules libres</span></td>
+        <td class="cell-val">Catalogue complet</td>
+        <td class="cell-val">Catalogue complet</td>
+        <td class="cell-val">Catalogue complet</td>
+        <td class="cell-val">Catalogue complet</td>
+        <td class="cell-val">Illimit&#233;</td>
+      </tr>
+      <tr>
+        <td>M&#233;tier</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-val">8&#160;modules / mois<span class="cell-sub">au choix dans le catalogue</span></td>
+        <td class="cell-val">20&#160;modules / mois<span class="cell-sub">au choix dans le catalogue</span></td>
+        <td class="cell-val">Catalogue complet</td>
+        <td class="cell-val">Catalogue complet</td>
+        <td class="cell-val">Illimit&#233;</td>
+      </tr>
+      <tr>
+        <td>Strat&#233;gie</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-val">Achat masterclasses<span class="cell-sub">&#224; partir de 39&#160;&#8364;</span></td>
+        <td class="cell-val">Contenus inclus chaque mois<span class="cell-sub">renouvel&#233;s automatiquement</span></td>
+        <td class="cell-val">Contenus inclus chaque mois<span class="cell-sub">par collaborateur</span></td>
+        <td class="cell-val">Illimit&#233;</td>
+      </tr>
+      <tr>
+        <td>Certificats</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-yes">&#10003; Par parcours</td>
+        <td class="cell-yes">&#10003; Par parcours</td>
+        <td class="cell-yes">&#10003; Avanc&#233;s</td>
+        <td class="cell-yes">&#10003; Avanc&#233;s</td>
+        <td class="cell-yes">&#10003; Entreprise</td>
+      </tr>
+      <tr>
+        <td>Quiz adaptatif</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-yes">&#10003;</td>
+        <td class="cell-yes">&#10003;</td>
+        <td class="cell-yes">&#10003;</td>
+        <td class="cell-yes">&#10003;</td>
+        <td class="cell-yes">&#10003;</td>
+      </tr>
+      <tr>
+        <td>Lives &amp; communaut&#233;</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-yes">&#10003;</td>
+        <td class="cell-yes">&#10003;</td>
+        <td class="cell-yes">&#10003;</td>
+      </tr>
+      <tr>
+        <td>Templates IA</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-yes">&#10003; Complets</td>
+        <td class="cell-yes">&#10003; Complets</td>
+        <td class="cell-yes">&#10003; Complets</td>
+      </tr>
+      <tr>
+        <td>Dashboard &amp; reporting &#233;quipe</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-yes">&#10003; Temps r&#233;el</td>
+        <td class="cell-yes">&#10003;</td>
+      </tr>
+      <tr>
+        <td>Financement formation</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-yes">&#10003; OPCO</td>
+        <td class="cell-yes">&#10003; OPCO + Qualiopi</td>
+      </tr>
+      <tr>
+        <td>SSO &amp; marque blanche</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-no">&#8211;</td>
+        <td class="cell-yes">&#10003;</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="font-size:11px;color:var(--muted);margin-top:9px;">
+    Tous les plans annuels b&#233;n&#233;ficient de &#8722;20&#160;%. Plans &#201;QUIPES et ORGANISATION sur engagement annuel uniquement.
+  </div>
+</div>
+
+<script>
+  const prices  = { monthly:{ess:19,prat:39,avd:89,team:45}, annual:{ess:15,prat:31,avd:71,team:36} };
+  const annTxt  = {
+    ess:'soit&#160;15&#160;&#8364;/mois &#8212; 182&#160;&#8364;/an',
+    prat:'soit&#160;31&#160;&#8364;/mois &#8212; 374&#160;&#8364;/an',
+    avd:'soit&#160;71&#160;&#8364;/mois &#8212; 854&#160;&#8364;/an'
+  };
+  let mode = 'monthly';
+  function setMode(m) {
+    mode = m;
+    document.getElementById('btn-monthly').className = 'toggle-btn'+(m==='monthly'?' active':'');
+    document.getElementById('btn-annual').className  = 'toggle-btn'+(m==='annual' ?' active':'');
+    const p = prices[m];
+    document.getElementById('p-ess').textContent  = p.ess;
+    document.getElementById('p-prat').textContent = p.prat;
+    document.getElementById('p-avd').textContent  = p.avd;
+    document.getElementById('p-team').textContent = p.team;
+    ['ess','prat','avd'].forEach(k => {
+      document.getElementById('a-'+k).innerHTML = m==='annual' ? '' : annTxt[k];
+    });
+  }
+  function showTab(tab, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('section-b2c').style.display = tab==='b2c' ? '' : 'none';
+    document.getElementById('section-b2b').style.display = tab==='b2b' ? '' : 'none';
+  }
+  document.getElementById('section-b2c').style.display='';
+  document.getElementById('section-b2b').style.display='';
+</script>
+
+</body>
+</html>

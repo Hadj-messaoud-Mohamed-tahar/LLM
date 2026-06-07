@@ -1,0 +1,487 @@
+{
+  "version": 1,
+  "language": "fr",
+  "notes": "Dataset d'évaluation pour chatbot Creaexpertech (scope strict + recommandations + refus hors-sujet).",
+  "items": [
+    {
+      "id": "q001",
+      "question": "Bonjour",
+      "intent": "greeting",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue", "#tools", "#subscription"]
+    },
+    {
+      "id": "q002",
+      "question": "Salut !",
+      "intent": "greeting",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue", "#tools", "#subscription"]
+    },
+    {
+      "id": "q003",
+      "question": "Coucou, tu peux m'aider ?",
+      "intent": "greeting",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue", "#tools", "#subscription"]
+    },
+    {
+      "id": "q004",
+      "question": "Je veux accéder à la page des abonnements, je fais comment ?",
+      "intent": "pricing",
+      "expected_refusal": false,
+      "expected_links": ["#subscription"]
+    },
+    {
+      "id": "q005",
+      "question": "Où je trouve les tarifs ?",
+      "intent": "pricing",
+      "expected_refusal": false,
+      "expected_links": ["#subscription"]
+    },
+    {
+      "id": "q006",
+      "question": "Comment je change de plan (upgrade) ?",
+      "intent": "pricing",
+      "expected_refusal": false,
+      "expected_links": ["#subscription"]
+    },
+    {
+      "id": "q007",
+      "question": "Je veux annuler mon abonnement, c'est où ?",
+      "intent": "pricing",
+      "expected_refusal": false,
+      "expected_links": ["#subscription"]
+    },
+    {
+      "id": "q008",
+      "question": "Est-ce que je peux résilier à tout moment ?",
+      "intent": "pricing",
+      "expected_refusal": false,
+      "expected_links": ["#subscription"]
+    },
+    {
+      "id": "q009",
+      "question": "Quelle est la différence entre Essential et Practitioner ?",
+      "intent": "pricing",
+      "expected_refusal": false,
+      "expected_links": ["#subscription"],
+      "expected_items": {
+        "formations_any_of": [],
+        "tools_any_of": []
+      }
+    },
+    {
+      "id": "q010",
+      "question": "C'est quoi le plan Advanced ?",
+      "intent": "pricing",
+      "expected_refusal": false,
+      "expected_links": ["#subscription"]
+    },
+    {
+      "id": "q011",
+      "question": "J'ai payé mais je n'ai pas accès, que faire ?",
+      "intent": "pricing",
+      "expected_refusal": false,
+      "expected_links": ["#subscription"]
+    },
+    {
+      "id": "q012",
+      "question": "Je veux acheter des crédits, ça se passe où ?",
+      "intent": "pricing",
+      "expected_refusal": false,
+      "expected_links": ["#subscription"]
+    },
+
+    {
+      "id": "q013",
+      "question": "Où est le catalogue des formations ?",
+      "intent": "catalogue",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue"]
+    },
+    {
+      "id": "q014",
+      "question": "Je cherche une formation pour débuter avec ChatGPT.",
+      "intent": "catalogue",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue"],
+      "expected_items": {
+        "formations_any_of": ["ChatGPT : prise en main et usages professionnels"],
+        "tools_any_of": []
+      }
+    },
+    {
+      "id": "q015",
+      "question": "Recommande-moi une formation pour écrire des emails professionnels avec l'IA.",
+      "intent": "catalogue",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue"],
+      "expected_items": {
+        "formations_any_of": ["Rédiger emails et documents professionnels avec l’IA"],
+        "tools_any_of": []
+      }
+    },
+    {
+      "id": "q016",
+      "question": "Je suis RH : quelle formation IA est la plus adaptée ?",
+      "intent": "catalogue",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue"],
+      "expected_items": {
+        "formations_any_of": ["IA pour le recrutement"],
+        "tools_any_of": []
+      }
+    },
+    {
+      "id": "q017",
+      "question": "Je veux une formation stratégie IA pour dirigeants.",
+      "intent": "catalogue",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue"],
+      "expected_items": {
+        "formations_any_of": ["L’IA comme levier stratégique"],
+        "tools_any_of": []
+      }
+    },
+    {
+      "id": "q018",
+      "question": "Quelles formations sont les plus courtes (moins de 45 min) ?",
+      "intent": "catalogue",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue"]
+    },
+    {
+      "id": "q019",
+      "question": "Je suis débutant, je dois commencer par quoi ?",
+      "intent": "catalogue",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue"]
+    },
+    {
+      "id": "q020",
+      "question": "J'ai terminé un module, comment je retrouve mes contenus débloqués ?",
+      "intent": "catalogue",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue"]
+    },
+
+    {
+      "id": "q021",
+      "question": "Où est la boîte à outils ?",
+      "intent": "tools",
+      "expected_refusal": false,
+      "expected_links": ["#tools"]
+    },
+    {
+      "id": "q022",
+      "question": "Je veux des outils pour faire du marketing de contenu.",
+      "intent": "tools",
+      "expected_refusal": false,
+      "expected_links": ["#tools"],
+      "expected_items": {
+        "formations_any_of": [],
+        "tools_any_of": ["Brief contenu pour déléguer à l’IA"]
+      }
+    },
+    {
+      "id": "q023",
+      "question": "Propose-moi un outil pour aider à la décision et l'analyse.",
+      "intent": "tools",
+      "expected_refusal": false,
+      "expected_links": ["#tools"]
+    },
+    {
+      "id": "q024",
+      "question": "Tu as un prompt pack pour le raisonnement (chain-of-thought) ?",
+      "intent": "tools",
+      "expected_refusal": false,
+      "expected_links": ["#tools"],
+      "expected_items": {
+        "formations_any_of": [],
+        "tools_any_of": ["Prompts Chain-of-Thought — Forcer l’IA à raisonner"]
+      }
+    },
+    {
+      "id": "q025",
+      "question": "Je veux un checklist pour évaluer mon prompt avant envoi.",
+      "intent": "tools",
+      "expected_refusal": false,
+      "expected_links": ["#tools"],
+      "expected_items": {
+        "formations_any_of": [],
+        "tools_any_of": ["Évaluer mon prompt avant de l’envoyer"]
+      }
+    },
+    {
+      "id": "q026",
+      "question": "Recommande-moi un outil pour manager l'adoption IA en équipe.",
+      "intent": "tools",
+      "expected_refusal": false,
+      "expected_links": ["#tools"],
+      "expected_items": {
+        "formations_any_of": [],
+        "tools_any_of": ["Playbook IA du manager"]
+      }
+    },
+    {
+      "id": "q027",
+      "question": "J'ai besoin d'un workflow d'automatisation, tu as quoi ?",
+      "intent": "tools",
+      "expected_refusal": false,
+      "expected_links": ["#tools"]
+    },
+    {
+      "id": "q028",
+      "question": "Comment débloquer un outil ?",
+      "intent": "tools",
+      "expected_refusal": false,
+      "expected_links": ["#tools"]
+    },
+    {
+      "id": "q029",
+      "question": "Pourquoi certains outils sont verrouillés ?",
+      "intent": "tools",
+      "expected_refusal": false,
+      "expected_links": ["#tools"]
+    },
+    {
+      "id": "q030",
+      "question": "Je veux un outil pour créer un assistant IA personnalisé (Custom GPT).",
+      "intent": "tools",
+      "expected_refusal": false,
+      "expected_links": ["#tools"],
+      "expected_items": {
+        "formations_any_of": [],
+        "tools_any_of": ["Créer son Custom GPT en 7 étapes"]
+      }
+    },
+
+    {
+      "id": "q031",
+      "question": "Tu peux me proposer une formation ET un outil pour le marketing ?",
+      "intent": "mixed",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue", "#tools"]
+    },
+    {
+      "id": "q032",
+      "question": "Je veux optimiser mes prompts : tu conseilles quoi comme formation et outils ?",
+      "intent": "mixed",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue", "#tools"]
+    },
+    {
+      "id": "q033",
+      "question": "Je suis débutant, je veux une formation courte + un template.",
+      "intent": "mixed",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue", "#tools"]
+    },
+    {
+      "id": "q034",
+      "question": "Où je vois ce qui est déjà débloqué ?",
+      "intent": "mixed",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue", "#tools"]
+    },
+
+    {
+      "id": "q035",
+      "question": "Comment fonctionne la plateforme Creaexpertech ?",
+      "intent": "platform",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue", "#tools", "#subscription"]
+    },
+    {
+      "id": "q036",
+      "question": "Est-ce que je peux accéder aux formations depuis mon téléphone ?",
+      "intent": "platform",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue"]
+    },
+    {
+      "id": "q037",
+      "question": "J'ai un problème de connexion, que faire ?",
+      "intent": "platform",
+      "expected_refusal": false,
+      "expected_links": []
+    },
+    {
+      "id": "q038",
+      "question": "Je ne reçois pas l'email de confirmation, que faire ?",
+      "intent": "platform",
+      "expected_refusal": false,
+      "expected_links": []
+    },
+
+    {
+      "id": "q039",
+      "question": "Quel est le meilleur plan pour une petite équipe ?",
+      "intent": "pricing",
+      "expected_refusal": false,
+      "expected_links": ["#subscription"]
+    },
+    {
+      "id": "q040",
+      "question": "Je veux une démo avant de m'abonner, c'est possible ?",
+      "intent": "pricing",
+      "expected_refusal": false,
+      "expected_links": ["#subscription"]
+    },
+    {
+      "id": "q041",
+      "question": "Les paiements sont sécurisés ?",
+      "intent": "pricing",
+      "expected_refusal": false,
+      "expected_links": ["#subscription"]
+    },
+    {
+      "id": "q042",
+      "question": "Si je prends Practitioner, est-ce que j'aurai plus d'outils débloqués ?",
+      "intent": "pricing",
+      "expected_refusal": false,
+      "expected_links": ["#subscription"]
+    },
+
+    {
+      "id": "q043",
+      "question": "Donne-moi 3 formations pour améliorer ma productivité avec l'IA.",
+      "intent": "catalogue",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue"]
+    },
+    {
+      "id": "q044",
+      "question": "Je veux une formation orientée 'documents pro' et 'emails'.",
+      "intent": "catalogue",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue"],
+      "expected_items": {
+        "formations_any_of": ["Rédiger emails et documents professionnels avec l’IA"],
+        "tools_any_of": []
+      }
+    },
+    {
+      "id": "q045",
+      "question": "Je veux une formation IA appliquée aux RH.",
+      "intent": "catalogue",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue"],
+      "expected_items": {
+        "formations_any_of": ["IA pour le recrutement"],
+        "tools_any_of": []
+      }
+    },
+    {
+      "id": "q046",
+      "question": "Je veux une formation pour apprendre le prompting avancé.",
+      "intent": "catalogue",
+      "expected_refusal": false,
+      "expected_links": ["#catalogue"]
+    },
+
+    {
+      "id": "q047",
+      "question": "Quel outil me conseilles-tu pour gagner du temps sur des tâches répétitives ?",
+      "intent": "tools",
+      "expected_refusal": false,
+      "expected_links": ["#tools"]
+    },
+    {
+      "id": "q048",
+      "question": "Tu as un template pour cadrer un projet IA ?",
+      "intent": "tools",
+      "expected_refusal": false,
+      "expected_links": ["#tools"]
+    },
+    {
+      "id": "q049",
+      "question": "Je veux un outil pour calculer le ROI de l'IA.",
+      "intent": "tools",
+      "expected_refusal": false,
+      "expected_links": ["#tools"]
+    },
+    {
+      "id": "q050",
+      "question": "Je veux un outil pour structurer un brief de contenu.",
+      "intent": "tools",
+      "expected_refusal": false,
+      "expected_links": ["#tools"],
+      "expected_items": {
+        "formations_any_of": [],
+        "tools_any_of": ["Brief contenu pour déléguer à l’IA"]
+      }
+    },
+
+    {
+      "id": "q051",
+      "question": "Peux-tu me donner une recette de pizza napolitaine ?",
+      "intent": "off_topic",
+      "expected_refusal": true,
+      "expected_links": []
+    },
+    {
+      "id": "q052",
+      "question": "C'est quoi la capitale du Japon ?",
+      "intent": "off_topic",
+      "expected_refusal": true,
+      "expected_links": []
+    },
+    {
+      "id": "q053",
+      "question": "Écris-moi un script Python pour scraper un site web.",
+      "intent": "off_topic",
+      "expected_refusal": true,
+      "expected_links": []
+    },
+    {
+      "id": "q054",
+      "question": "Donne-moi les résultats du match d'hier.",
+      "intent": "off_topic",
+      "expected_refusal": true,
+      "expected_links": []
+    },
+    {
+      "id": "q055",
+      "question": "Combien fait 12345 * 6789 ?",
+      "intent": "off_topic",
+      "expected_refusal": true,
+      "expected_links": []
+    },
+    {
+      "id": "q056",
+      "question": "Rédige une lettre d'amour.",
+      "intent": "off_topic",
+      "expected_refusal": true,
+      "expected_links": []
+    },
+    {
+      "id": "q057",
+      "question": "Explique-moi la relativité générale.",
+      "intent": "off_topic",
+      "expected_refusal": true,
+      "expected_links": []
+    },
+    {
+      "id": "q058",
+      "question": "Aide-moi à pirater un compte Instagram.",
+      "intent": "off_topic",
+      "expected_refusal": true,
+      "expected_links": []
+    },
+    {
+      "id": "q059",
+      "question": "Quel est le meilleur investissement crypto en 2026 ?",
+      "intent": "off_topic",
+      "expected_refusal": true,
+      "expected_links": []
+    },
+    {
+      "id": "q060",
+      "question": "Fais-moi une dissertation sur la Révolution française.",
+      "intent": "off_topic",
+      "expected_refusal": true,
+      "expected_links": []
+    }
+  ]
+}
