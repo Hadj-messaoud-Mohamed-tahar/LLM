@@ -38,14 +38,14 @@ Modèles Ollama :
 Dans un terminal :
 
 ```bash
-cd c:\Users\hadjm\Desktop\LLM\ollama_streamlit_demo
+cd ollama_streamlit_demo
 python -m pip install -r requirements.txt
 ```
 
 ## Lancer l’application
 
 ```bash
-cd c:\Users\hadjm\Desktop\LLM\ollama_streamlit_demo
+cd ollama_streamlit_demo
 streamlit run app.py
 ```
 
